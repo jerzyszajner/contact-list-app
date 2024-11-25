@@ -6,7 +6,7 @@ const addressInput = document.querySelector("[name='address']");
 const submitButton = form.querySelector(".form__submit-button");
 
 //DECLARING VARIABLES
-const contacts = [];
+const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
 
 const addContacts = (e) => {
   e.preventDefault();
@@ -18,7 +18,12 @@ const addContacts = (e) => {
     contactAddress: addressInput.value,
   };
   contacts.push(contact);
+  storeContacts(contacts);
   console.log(contacts);
+};
+
+const storeContacts = (contactArray) => {
+  localStorage.setItem("contacts", JSON.stringify(contactArray));
 };
 
 // ADD EVENT LISTENER TO THE CONTACTS
