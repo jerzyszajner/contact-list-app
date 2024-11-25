@@ -1,0 +1,10 @@
+@font-face {
+  font-family: Lato-Regular;
+  src: url("../assets/fonts/Lato-Regular.ttf");
+}
+
+body {
+  min-width: 340px;
+  width: 100%;
+  min-height: 100vh;
+}
