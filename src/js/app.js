@@ -1,19 +1,25 @@
-const toggleMenuButton = document.querySelector(".navbar__toggle-button");
-const navbarLinksContainer = document.querySelector(".navbar__links");
-const links = document.querySelectorAll(".navbar__link");
+const form = document.querySelector(".contact-app__form");
+const firstnameInput = document.querySelector("[name='firstname']");
+const lastnameInput = document.querySelector("[name='lastname']");
+const phoneInput = document.querySelector("[name='phone-number']");
+const addressInput = document.querySelector("[name='address']");
+const submitButton = form.querySelector(".form__submit-button");
 
-toggleMenuButton.addEventListener("click", () => {
-  navbarLinksContainer.classList.toggle("navbar__links--active");
-});
+//DECLARING VARIABLES
+const contacts = [];
 
-links.forEach((link) => {
-  link.addEventListener("click", (e) => {
-    // Remove active class from all links
-    links.forEach((link) => link.classList.remove("navbar__link--active"));
+const addContacts = (e) => {
+  e.preventDefault();
+  const contact = {
+    id: Date.now(),
+    contactFirstname: firstnameInput.value,
+    contactLastname: lastnameInput.value,
+    contactPhoneNumber: phoneInput.value,
+    contactAddress: addressInput.value,
+  };
+  contacts.push(contact);
+  console.log(contacts);
+};
 
-    // Add active class to the clicked link using the 'e' object
-    e.currentTarget.classList.add("navbar__link--active");
-  });
-});
-
-// There are 2 active classes with link and links. pay attention
+// ADD EVENT LISTENER TO THE CONTACTS
+form.addEventListener("submit", addContacts);
